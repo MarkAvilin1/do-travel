@@ -1,0 +1,45 @@
+{% extends 'ar/base/base.html' %}
+
+{% load static %}
+
+{% block title %} التسجيل {% endblock %}
+
+{% block content %}
+
+<div class="jumbotron" style="height:100px;width:100%;background:skyblue;text-align:center">
+    <h1>التسجيل</h1>
+</div>
+
+
+<div class="container p-5">
+    <form style="width:75%" method="post" action="{% url 'register_ar' %}" class="rd-form text-end" dir="rtl">
+        {% csrf_token %}
+        <div class="form-wrap">
+            <input type="text" name="first_name" id="first_name" class="form-input"
+                   placeholder="الاسم الاول">
+        </div>
+
+        <div class="form-wrap">
+            <input type="text" name="last_name" id="last_name" class="form-input"
+                   placeholder="اللقب">
+        </div>
+
+
+        <div class="form-wrap">
+            <input type="email" name="email" id="email" class="form-input" placeholder="البريد الالكتروني">
+        </div>
+
+        <div class="form-wrap">
+            <input type="password" name="password" id="password" class="form-input"
+                   placeholder="كلمة المرور">
+        </div>
+
+        <input type="submit" value="تسجيل" class="btn btn-info btn-lg">
+
+        <p>لديك حساب <a class="link-danger" href="{% url 'login_ar' %}"><b>الدخول</b></a></p>
+
+    </form>
+
+</div>
+
+{% endblock %}

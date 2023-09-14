@@ -1,0 +1,38 @@
+{% extends 'ar/base/base.html' %}
+
+{% load static %}
+
+{% block title %} About Us {% endblock %}
+
+{% block content %}
+
+
+<!-- Our Story-->
+<section class="section section-lg bg-default">
+    <h2 style="text-align:center;" class=" p-5 m-5">من نحن</h2>
+    <div class="container text-end shadow-lg">
+
+        <div class="card mb-3">
+            <img class="card-img-top" src="{% static 'images/banner/we.png' %}" alt="Card image cap">
+            <div class="card-body" style="text-shadow:1px 1px 2px black">
+                <h5 class="card-title">شركة Do travel للسياحة و السفر</h5>
+                <p class="big text-end text-black text-justify font-weight-bold" dir="rtl">
+شركة Do-Travel لسياحة و السفر في تركيا : شركة Do-Travel للسياحة والسفر هي جزء من
+                    مجموعة شركات Do-Travel كروب , وهي ناتج تجمع لأصحاب الخبرات الطويلة في
+                    مجال السياحة والسفر .
+                    <br>
+                    نلتزم بالمعاير الأخلاقية للعمل السياحي , المصداقية، الأمانة، الانفتاح، العمل الجماعي،
+                    حسن الضيافة للأخوة السياح العمل الدائم على إرضاء الأخوة السياح هو شعارنا ، حسن المعاملة والابتسامة
+                    هي أساس تعاملنا.
+                    <br>
+                    ان شركة Do-Travel عضو في مجموعة شركات السياحة في تركيا تحمل ترخيص المستوى الأول في ترتيب الشركات
+                    السياحية ونسعى دائما لان نكون في الريادة .
+                </p>
+                <a href="{% url 'contacts_ar' %}" class="btn btn-primary m-5">تواصل معنا</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+{% endblock %}

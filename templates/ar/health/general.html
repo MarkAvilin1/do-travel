@@ -1,0 +1,162 @@
+{% extends 'ar/base/base.html' %}
+
+{% load static %}
+
+{% block title %} العلاجات العامة  {% endblock %}
+
+{% block content %}
+
+<div class="jumbotron jumbotron-fluid" style="width:100%;background-image:url({% static 'images/offers/general.jpg' %});
+background-repeat:no-repeat;background-size:cover;background-attachment:fixed;text-align:center;">
+    <h1 style="color:black;text-shadow:0 1px 2px black;padding:25px;">العلاجات العامة</h1>
+    <div class="container p-5"
+         style="background-color:rgba(256, 256, 256, 0.5); border-radius:10px;text-shadow:0 1px 2px black">
+        <h3 class="card-title text-black">العلاجات العامة</h3>
+        <h6 class="card-text text-start text-dark text-end">
+            قيم الرعاية الصحية في  Do-Travel:<br>
+            - نحن نقدر الإنسان. أن نكون موثوقين هو مبدأنا الذي لا غنى عنه. <br>
+
+           - جميع خدماتنا تحدث فرقًا. <br>
+
+           - نؤمن إيمانا عميقا بالمناهج العلمية والتحسين المستمر. <br>
+
+           - هذا فريق محترف ، متخصص ، وموجه نحو النجاح. <br>
+
+            - نموذجية مبادئنا الأخلاقية وأخلاقيات المهنة. <br><br>
+
+            يرجى العلم أن سلامتك تظل على رأس أولوياتنا حيث نسعى جاهدين لتوفيرها لك
+             مع الرعاية المتميزة التي تحتاجها وتستحقها.
+            <br>
+            في Do-Travel ، لدينا الحل لجميع المشكلات الصحية ، ما عليك سوى الكتابة لنا ، وسنقوم بالرد عليك في أسرع وقت ممكن.
+        </h6>
+    </div>
+</div>
+
+
+<div class="container shadow-lg">
+
+    {% if success_msg != '' %}
+    <div class="alert alert-success" id="success" role="alert" dir="rtl">
+        <h5>{{ success_msg }}</h5>
+    </div>
+    {% endif %}
+
+
+
+    <form action="{% url 'general_ar' %}" method="post" class="p-5 m-5 text-end">
+        {% csrf_token %}
+        <div class="form-row">
+            <div class="form-group col-md-5">
+                <label for="fullname_id" class="text-black font-weight-bold">الأسم الكامل</label>
+                <input type="text" name="fullname" class="form-control" id="fullname_id" placeholder="اسمك الكامل" required>
+            </div>
+            <div class="form-group col-md-3">
+                <label for="age_id" class="text-black font-weight-bold">العمر</label>
+                <input type="number" name="age" class="form-control" id="age_id" placeholder="عمرك">
+            </div>
+            <div class=" col-md-3 form-check form-switch form-check-inline">
+                <input class="form-check-input" role="switch" type="checkbox" id="ch_dis_id" name="disease" value="نعم">
+                <label class="form-check-label text-black font-weight-bold" for="ch_dis_id">يوجد أمراض مزمنة
+                </label>
+            </div>
+        </div>
+
+        <div class="form-row">
+            <div class="form-group col-md-4">
+                <label for="inputEmail4" class="text-black font-weight-bold">البريد الألكتروني</label>
+                <input type="email" name="email" class="form-control" id="inputEmail4" placeholder="بريدك الألكتروني" required>
+            </div>
+            <div class="form-group col-md-4">
+                <label for="whatsapp_id" class="text-black font-weight-bold"> رقم الواتساب </label>
+                <input type="tel" class="form-control" name="phone" id="whatsapp_id" placeholder="رقم الواتساب ">
+            </div>
+            <div class="form-group col-md-4">
+                <label for="date_from" class="text-black font-weight-bold">التاريخ </label>
+                <input name="date" type="date" class="form-control" id="date_from">
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="treatment_id" class="text-black font-weight-bold">نوع العلاج</label>
+            <input type="text" name="type" class="form-control" id="treatment_id" placeholder="نوع العلاج الذي تحتاجه...">
+        </div>
+
+        <div class=" col-md-3 form-check form-switch form-check-inline">
+            <input class="form-check-input" name="full" value="نعم" role="switch" type="checkbox" id="full_id">
+            <label class="form-check-label text-black font-weight-bold" for="full_id">
+                الخدمات الشاملة
+            </label>
+        </div>
+
+        <p class="text-muted">الخدمات شاملة تشمل خدمات كاملة مثل (تأشيرة ، تذاكر ، استقبال ، نقل من المطار ، فندق ، نقل من وإلى المستشفى ، نقل إلى المطار في نهاية العلاج)</p>
+
+        <div class="form-row" id="comprehensive" style="display:none;">
+
+            <div class="form-group col-md-6">
+                <label for="inputState" class="text-black font-weight-bold">الدرجة</label>
+                <select id="inputState" class="form-control" name="class_status">
+                    <option value="لا" selected>-------</option>
+                    <option value="اقتصادية">اقتصادية</option>
+                    <option value="سياحية">سياحية</option>
+                </select>
+            </div>
+            <div class="form-group col-md-6">
+                <label for="pno" class="text-black font-weight-bold">عدد الاشخاص</label>
+                <input type="number" name="person_no" class="form-control" id="pno" placeholder="كم شخص">
+            </div>
+
+            <div class=" col-md-6 form-check form-switch form-check-inline">
+                <input class="form-check-input" role="switch" type="checkbox" id="child_id" name="have_child" value="نعم">
+                <label class="form-check-label text-black font-weight-bold" for="child_id">يوجد اطفال
+                </label>
+            </div>
+
+            <div class="form-group col-md-6" style="display:none;">
+                <label for="child_no" class="text-black font-weight-bold">عدد الاطفال</label>
+                <input type="number" name="child_no" class="form-control" id="child_no" placeholder="كم عدد الاطفال">
+                <p class="text-muted">لطفا , يرجى تبيان عمر كل طفل في خانة الملاحظات</p>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="note_id" class="text-black font-weight-bold">الملاحظات</label>
+            <textarea class="form-control" name="note" id="note_id" cols="20" rows="7a"></textarea>
+        </div>
+
+        <button type="submit" class="btn btn-primary">ارسال</button>
+    </form>
+</div>
+
+<script>
+    child_id.onchange = function() {
+        if(this.checked){
+        document.querySelector("#child_no").closest('.form-group').style.display = "";
+      }
+      else{
+        document.querySelector("#child_no").closest('.form-group').style.display = "none";
+      }
+    }
+
+    full_id.onchange = function() {
+        if(this.checked){
+        document.querySelector("#comprehensive").style.display = "";
+      }
+      else{
+        document.querySelector("#comprehensive").style.display = "none";
+      }
+    }
+
+    setTimeout(() => {
+      const box = document.querySelector('.alert-success');
+      box.style.display = 'none';
+    }, 10000);
+
+    setTimeout(() => {
+      const box = document.querySelector('.alert-warning');
+      box.style.display = 'none';
+    }, 20000);
+
+
+</script>
+
+{% endblock %}

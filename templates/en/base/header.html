@@ -1,0 +1,150 @@
+{% load static %}
+<!--Header-->
+<!--<div class="ie-panel"><a href="http://windows.microsoft.com/en-US/internet-explorer/">-->
+<!--    <img src="{% static 'images/orgi/ie8-panel/warning_bar_0000_us.jpg' %}" height="42" width="820"-->
+<!--         alt="You are using an outdated browser. For a faster, safer browsing experience, upgrade for free today."></a>-->
+<!--</div>-->
+<!--<div class="preloader">-->
+<!--    <div class="preloader-body">-->
+<!--        <div class="loader">-->
+<!--            <div></div>-->
+<!--            <div></div>-->
+<!--            <div></div>-->
+<!--            <div></div>-->
+<!--            <div></div>-->
+<!--            <div></div>-->
+<!--            <div></div>-->
+<!--            <div></div>-->
+<!--            <div></div>-->
+<!--        </div>-->
+<!--        <p>Loading...</p>-->
+<!--    </div>-->
+<!--</div>-->
+<!--<div class="page">-->
+
+    <header class="section page-header rd-navbar-transparent-wrap">
+        <!--RD Navbar-->
+        <div class="rd-navbar-wrap">
+            <nav class="rd-navbar rd-navbar-transparent" data-layout="rd-navbar-fixed" data-sm-layout="rd-navbar-fixed"
+                 data-md-layout="rd-navbar-fixed" data-md-device-layout="rd-navbar-fixed"
+                 data-lg-layout="rd-navbar-static" data-lg-device-layout="rd-navbar-static"
+                 data-xl-layout="rd-navbar-static" data-xl-device-layout="rd-navbar-static"
+                 data-lg-stick-up-offset="20px" data-xl-stick-up-offset="20px" data-xxl-stick-up-offset="20px"
+                 data-lg-stick-up="true" data-xl-stick-up="true" data-xxl-stick-up="true">
+                <div class="rd-navbar-collapse-toggle rd-navbar-fixed-element-1"
+                     data-rd-navbar-toggle=".rd-navbar-collapse"><span></span></div>
+                <div class="rd-navbar-aside-outer rd-navbar-collapse">
+                    <div class="rd-navbar-aside">
+                        <div class="rd-navbar-info">
+                            <div class="icon novi-icon mdi mdi-whatsapp"></div>
+                            <a href="https://wa.me/message/PTQAEITL5M53O1" target="_blank">+90 (534) 949 9345</a>
+                        </div>
+                        {% if user.is_authenticated %}
+                        <ul class="list-lined">
+                            <li>Welcome &nbsp; {{ user.first_name }} &nbsp; {{ user.last_name }}</li>
+                            <li><a href="{% url 'logout' %}">Logout</a></li>
+                        </ul>
+                        {% else %}
+                        <ul class="list-lined">
+                            <li><a href="{% url 'login' %}">Log in</a></li>
+                            <li><a href="{% url 'register' %}">Registration</a></li>
+                        </ul>
+                        {% endif %}
+                    </div>
+                </div>
+                <div class="rd-navbar-main-outer">
+                    <div class="rd-navbar-main-inner">
+                        <div class="rd-navbar-main" style="height:50px;">
+                            <!--RD Navbar Panel-->
+                            <div class="rd-navbar-panel">
+                                <!--RD Navbar Toggle-->
+                                <button class="rd-navbar-toggle" data-rd-navbar-toggle=".rd-navbar-nav-wrap">
+                                    <span></span></button>
+                                <!--RD Navbar Brand-->
+                                <div class="rd-navbar-brand">
+                                    <!--Brand-->
+                                    <a class="brand" href="{% url 'home' %}">
+                                        <img class="brand-logo-dark" src="{% static 'images/logos/travel1.png' %}"
+                                             style="height:45px; width:100px;" alt="logo"/>
+                                        <img class="brand-logo-light" src="{% static 'images/logos/travel1.png' %}"
+                                             style="height:45px; width:100px;" alt="logo"/>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="rd-navbar-main-element">
+                                <div class="rd-navbar-nav-wrap">
+                                    <ul class="rd-navbar-nav">
+                                        <li class="rd-nav-item active"><a class="rd-nav-link" href="{% url 'home' %}">Home</a>
+                                        </li>
+                                        <li class="rd-nav-item"><a class="rd-nav-link"
+                                                                   href="{% url 'about' %}">About</a>
+                                        </li>
+                                        <li class="rd-nav-item dropdown">
+                                            <a class="rd-nav-link dropdown-toggle" href="#" role="button"
+                                               data-bs-toggle="dropdown" aria-expanded="false">
+                                                Tourism
+                                            </a>
+                                            <ul class="dropdown-menu">
+                                                <li><a class="dropdown-item nav-link" href="{% url 'tickets' %}">Ticket Booking</a></li>
+                                                <li><a class="dropdown-item nav-link" href="{% url 'booking' %}">Hotels Booking</a></li>
+                                                <li><a class="dropdown-item nav-link" href="{% url 'trips' %}">Plan your Trip</a></li>
+                                                <li><a class="dropdown-item nav-link" href="{% url 'visas' %}">Apply for Visa</a></li>
+                                            </ul>
+                                        </li>
+                                        <li class="rd-nav-item dropdown">
+                                            <a class="rd-nav-link dropdown-toggle" href="#" role="button"
+                                               data-bs-toggle="dropdown" aria-expanded="false">
+                                                Healthcare
+                                            </a>
+                                            <ul class="dropdown-menu">
+                                                <li><a class="dropdown-item nav-link" href="{% url 'hair' %}">Hair Transplant</a></li>
+                                                <li><a class="dropdown-item nav-link" href="{% url 'dentist' %}">Dentistry</a></li>
+                                                <li><a class="dropdown-item nav-link" href="{% url 'optic' %}">Ophthalmology</a></li>
+                                                <li><a class="dropdown-item nav-link" href="{% url 'plastic' %}">Plastic Surgery</a></li>
+                                                <li><a class="dropdown-item nav-link" href="{% url 'general' %}">General Treatment</a></li>
+                                            </ul>
+                                        </li>
+                                        <li class="rd-nav-item">
+                                            <a class="rd-nav-link" href="{% url 'education' %}">Education Services</a>
+                                        </li>
+                                        <li class="rd-nav-item"><a class="rd-nav-link" href="{% url 'contacts' %}">Contacts</a>
+                                        </li>
+                                        {% if user.is_superuser%}
+                                        <li class="rd-nav-item dropdown">
+                                            <a class="rd-nav-link dropdown-toggle" href="#" role="button"
+                                               data-bs-toggle="dropdown" aria-expanded="false">
+                                                Administration
+                                            </a>
+                                            <ul class="dropdown-menu">
+                                                <li><a class="dropdown-item nav-link" href="{% url 'customers' %}">Customers</a></li>
+                                                <li><a class="dropdown-item nav-link" href="{% url 'add_offers' %}">Add Offers</a></li>
+                                            </ul>
+                                        </li>
+                                        {% endif %}
+                                        <li class="rd-nav-item dropdown">
+                                            <a class="rd-nav-link dropdown-toggle" href="#" role="button"
+                                               data-bs-toggle="dropdown" aria-expanded="false">
+                                                <img src="{% static 'images/logos/translate.png' %}" alt="languages" width="25" height="25"> Languages
+                                            </a>
+                                            <ul class="dropdown-menu text-start" dir="ltr">
+                                                <li>
+                                                    <a class="dropdown-item flag-icon" href="{% url 'home_ar' %}">
+                                                        <img alt="English" src="https://img.freepik.com/free-vector/united-arab-emirates-flag-round-badge_1308-73285.jpg?w=740&t=st=1667671527~exp=1667672127~hmac=75a246b9b57352e2b24221378505dc5ecefdf0bc07b1047f17e71c1cef8c8596" width="25" height="25">   العربية
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a class="dropdown-item nav-link" href="{% url 'home' %}">
+                                                        <img alt="English" src="https://img.freepik.com/free-vector/america-flag-design-round-badge_1308-72238.jpg?w=740&t=st=1667671630~exp=1667672230~hmac=24e9bf08b9a666a5f62d20f55de9928bb73c2e793a31cdc0eb138cc886f955ec" width="25" height="25"> English
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </header>

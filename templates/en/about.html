@@ -1,0 +1,37 @@
+{% extends 'en/base/base.html' %}
+
+{% load static %}
+
+{% block title %} About Us {% endblock %}
+
+{% block content %}
+
+
+<!-- Our Story-->
+<section class="section section-lg bg-default">
+    <h2 style="text-align:center;" class="p-5 m-5">About Us</h2>
+    <div class="container shadow-lg">
+
+        <div class="card mb-3">
+            <img class="card-img-top" src="{% static 'images/banner/we.png' %}" alt="Card image cap">
+            <div class="card-body" style="text-shadow:1px 1px 2px black">
+                <h5 class="card-title">Do-Travel Company For Tourism And Travel </h5>
+                <p class="big text-black text-justify font-weight-bold">
+
+                    Do travel company for tourism and travel in Turkey: Do travel company for tourism and travel is part
+                    of the Do travel group, and it is a product that brings together long experience in the
+                    field of tourism and travel. <br>
+                    We are committed to the ethical standards of tourism work, credibility, honesty, openness, teamwork,
+                    hospitality for the tourists brothers Constant work to satisfy the fellow tourists is our motto,
+                    good treatment and a smile is the basis of our dealings. <br>
+                    Do travel is a member of the group of tourism companies in Turkey that holds the first level license
+                    in the arrangement of tourism companies, and we always strive to be in the lead.
+                </p>
+                <a href="{% url 'contacts' %}" class="btn btn-primary m-5">Contact Us</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+{% endblock %}

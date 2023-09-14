@@ -1,0 +1,175 @@
+{% extends 'ar/base/base.html' %}
+
+{% load static %}
+
+{% block title %} بطاقات الطيران {% endblock %}
+
+{% block content %}
+<div class="jumbotron jumbotron-fluid" style="width:100%;background-image:url({% static 'images/offers/ticket1.jpg' %});
+background-repeat:no-repeat;background-size:cover;background-attachment:fixed;text-align:center;">
+    <h1 style="color:black;text-shadow:0 1px 2px black;padding:25px;">بطاقات السفر</h1>
+    <div class="container p-2"
+         style="background-color:rgba(256, 256, 256, 0.3); border-radius:10px;text-shadow:0 1px 2px black">
+
+        <h3 class="card-title text-black"> احصل على بطاقات السفر مع Do-Travel</h3>
+        <h6 class="card-text text-dark p-2 text-end" style="text-align:left">
+            باختيار Do-Travel ، يمكنك دائمًا أن تكون هادئًا وتستمتع فقط بإجازتك 😉 <br> <br>
+                 يمكن لـ Do-Travel للخدمات السياحية والطبية والتعليمية أن تجعل كل أحلامك تتحقق. <br> <br>
+                  Do-Travel ، نحن فخورون بخدماتنا عالية المستوى لإدارة خطط سفر عملائنا ، بالإضافة إلى خدماتنا المخصصة المتوفرة لتلبية جميع احتياجات ومتطلبات عملائنا.
+                 <br> <br>
+            قارن أسعار تذاكر الطيران لأكثر من 1200 شركة طيران ، قارن بنفسك واختر
+             الذي يناسبك. توقف عن الحلم وافعلها الآن!
+             <br> احجز الآن وكن جاهزًا لرحلتك القادمة. <br> لا توجد تكاليف أو رسوم خفية ، ما عليك سوى الكتابة لنا ، و الباقي علينا
+             سنرد عليك في اسرع وقت ممكن.
+
+        </h6>
+
+    </div>
+</div>
+
+
+<div class="container shadow-lg">
+
+    {% if success_msg != '' %}
+    <div class="alert alert-success" id="success" role="alert" dir="rtl">
+        <h5>{{ success_msg }}</h5>
+    </div>
+    {% endif %}
+
+    {% if errors != '' %}
+    <div class="alert alert-warning" role="alert" dir="rtl">
+       <h5> {{ errors }}</h5>
+    </div>
+    {% endif %}
+
+    <form action="{% url 'tickets_ar' %}" method="post" class="p-5 m-5 text-end">
+        {% csrf_token %}
+        <div class="form-group">
+            <label for="fullname_id" class="text-black font-weight-bold">الاسم الكامل</label>
+            <input type="text" name="fullname" class="form-control" id="fullname_id" placeholder="اسمك الكامل" required>
+        </div>
+
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label for="inputEmail4" class="text-black font-weight-bold">البريد الألكتروني</label>
+                <input type="email" name="email" class="form-control" id="inputEmail4" placeholder="البريد الألكتروني" required>
+            </div>
+            <div class="form-group col-md-6">
+                <label for="whatsapp_id" class="text-black font-weight-bold">رقم الواتساب</label>
+                <input type="tel" class="form-control" name="phone" id="whatsapp_id" placeholder="رقم الواتساب">
+            </div>
+        </div>
+
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label for="from_id" class="text-black font-weight-bold">من</label>
+                <input type="text" name="country_from" class="form-control" id="from_id" placeholder="من ..." required>
+            </div>
+            <div class="form-group col-md-6">
+                <label for="to_id" class="text-black font-weight-bold">الى</label>
+                <input type="text" class="form-control" name="country_to" id="to_id" placeholder="الى ..." required>
+            </div>
+        </div>
+
+        <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="select" id="oneway" value="ذهاب فقط" checked="checked">
+            <label class="form-check-label text-black font-weight-bold" for="oneway">ذهاب فقط</label>
+        </div>
+        <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="select" id="roundtrip" value="ذهاب وإياب">
+            <label class="form-check-label text-black font-weight-bold" for="roundtrip">ذهاب و إياب</label>
+        </div>
+        {% if date_error != '' %}
+        <div class="alert alert-warning" id="date_error" role="alert" dir="rtl">
+           <h5> {{ date_error }} </h5>
+        </div>
+        {% endif %}
+        <div class="form-row">
+
+            <div class="form-group col-md-4">
+                <label for="date_dep" class="text-black font-weight-bold">تاريخ المغادرة </label>
+                <input name="date_dep" type="date" class="form-control" id="date_dep" required>
+            </div>
+            <div class="form-group col-md-4" style="display:none;">
+                <label for="date_re" class="text-black font-weight-bold">تاريخ العودة</label>
+                <input name="date_re" type="date" class="form-control" id="date_re">
+            </div>
+            <div class="form-group col-md-4">
+                <label for="inputState" class="text-black font-weight-bold">الدرجة</label>
+                <select id="inputState" class="form-control" name="class_status">
+                    <option selected value="لا">-------</option>
+                    <option value="اقتصادية">اقتصادية</option>
+                    <option value="سياحية">سياحية</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="form-row">
+            <div class="form-group col-md-4">
+                <label for="pno" class="text-black font-weight-bold">عدد الأشخاص</label>
+                <input type="number" class="form-control" name="person_no" id="pno" placeholder="كم شخص">
+            </div>
+
+            <div class=" col-md-3 form-check form-switch form-check-inline">
+                <input class="form-check-input" role="switch" type="checkbox" name="have_child" value="نعم" id="child_id">
+                <label class="form-check-label text-black font-weight-bold" for="child_id">يوجد أطفال
+                </label>
+            </div>
+
+            <div class="form-group col-md-4" style="display:none;">
+                <label for="child_no" class="text-black font-weight-bold">عدد الأطفال</label>
+                <input type="number" class="form-control" name="child_no" id="child_no" placeholder="كم عدد الأطفال">
+                <p class="text-muted">لطفا , يرجى تبيان عمر كل طفل في خانة الملاحظات</p>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="note_id" class="text-black font-weight-bold">الملاحظات</label>
+            <textarea class="form-control" name="note" id="note_id" cols="20" rows="7a"></textarea>
+        </div>
+
+        <button type="submit" class="btn btn-primary">ارسال</button>
+    </form>
+
+    {% if error_msg != '' %}
+    <div class="alert alert-warning" id="error" role="alert" dir="rtl">
+        <h5>{{ error_msg }}</h5>
+    </div>
+    {% endif %}
+</div>
+
+<script>
+    roundtrip.onchange = function() {
+        if(this.checked){
+        document.querySelector("#date_re").closest('.form-group').style.display = "";
+      }
+    }
+
+    oneway.onchange = function() {
+        if(this.checked){
+        document.querySelector("#date_re").closest('.form-group').style.display = "none";
+      }
+    }
+
+    child_id.onchange = function() {
+        if(this.checked){
+        document.querySelector("#child_no").closest('.form-group').style.display = "";
+      }
+      else{
+        document.querySelector("#child_no").closest('.form-group').style.display = "none";
+      }
+    }
+
+    setTimeout(() => {
+      const box = document.querySelector('.alert-success');
+      box.style.display = 'none';
+    }, 10000);
+
+    setTimeout(() => {
+      const box = document.querySelector('.alert-warning');
+      box.style.display = 'none';
+    }, 20000);
+
+</script>
+
+{% endblock %}

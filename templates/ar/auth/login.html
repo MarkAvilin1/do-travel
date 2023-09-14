@@ -1,0 +1,47 @@
+{% extends 'ar/base/base.html' %}
+
+{% load static %}
+
+{% block title %} الدخول {% endblock %}
+
+{% block content %}
+
+
+<div class="jumbotron" style="height:100px;width:100%;background:skyblue;text-align:center">
+    <h1>الدخول</h1>
+</div>
+
+<section class="container p-5">
+
+    <form class="rd-form text-black font-weight-bold text-end" method="post" action="{% url 'login_ar' %}" dir="rtl">
+
+        {% csrf_token %}
+
+        {% if error|length > 0 %}
+        {% for error in form.non_field_errors %}
+        <p class="alert alert-danger" role="alert">
+            {{ error }}
+        </p>
+        {% endfor %}
+        {% endif %}
+
+        <div class="row-6 p-1">
+            <div class="col-md-4 p-1">
+                <div class="form-wrap">
+                    <input class="form-input" placeholder="اسم المستخدم او البريد" type="text" name="username" required>
+                </div>
+            </div>
+            <div class="col-md-4 p-1">
+                <div class="form-wrap">
+                    <input class="form-input" placeholder="رمز الدخول" type="password" name="password" required>
+                </div>
+            </div>
+            <input type="submit" value="دخول" class="btn btn-info btn-lg">
+        </div>
+        <p class="small fw-bold pt-3">ليس لديك حساب? <a href="{% url 'register_ar' %}"
+                                                              class="link-danger">التسجيل</a></p>
+    </form>
+
+</section>
+
+{% endblock %}

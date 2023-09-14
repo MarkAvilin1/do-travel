@@ -1,0 +1,189 @@
+{% extends 'en/base/base.html' %}
+
+{% load static %}
+
+{% block title %} Dentistry {% endblock %}
+
+{% block content %}
+
+<div class="jumbotron jumbotron-fluid" style="width:100%;background-image:url({% static 'images/offers/dentist.jpg' %});
+background-repeat:no-repeat;background-size:cover;background-attachment:fixed;text-align:center;">
+    <h1 style="color:black;text-shadow:0 1px 2px black;padding:25px;">Oral and Dental Healthcare</h1>
+    <div class="container p-5"
+         style="background-color:rgba(256, 256, 256, 0.5); border-radius:10px;text-shadow:0 1px 2px black">
+        <h3 class="card-title text-black">Oral and Dental Healthcare</h3>
+        <h6 class="card-text text-start text-dark">
+            Do-Travel Healthcare Values: <br>
+            - We value the human; being reliable is our indispensable principle. <br>
+
+            - All our services make a difference. <br>
+
+            - We deeply believe in scientific approaches and continuous improvement. <br>
+
+            - This is an agile, target- and success-oriented team. <br>
+
+            - Our ethical principles and professional ethics are modeled. <br><br>
+
+            Oral and dental health is of great importance in every period of human life.
+            Oral and dental health problems and aesthetic problems caused by teeth can
+            seriously affect people's lives. Oral and dental health issues can also have
+            an impact on general health. For this reason, it is necessary to trust fully
+            equipped health institutions and professional dentists with experience in oral and dental health.
+            Personalized treatment is planned for patients of all age group in Oral and Dental Health Clinic Partners
+            of Do-Travel. In our partner hospitals, Dental Implant, Smile Aesthetics, Digital Design, Root Canal
+            Therapy, Zirconium Coating, Teeth Stone Cleaning, Broken Tooth Treatment applications are carried
+            out successfully.
+            You have only to write us, we'll answer you ASAP.
+        </h6>
+    </div>
+</div>
+
+
+<div class="container shadow">
+
+    {% if success_msg != '' %}
+    <div class="alert alert-success" id="success" role="alert">
+        <h5>{{ success_msg }}</h5>
+    </div>
+    {% endif %}
+
+
+    <form action="{% url 'dentist' %}" method="post" class="p-5 m-5">
+        {% csrf_token %}
+        <div class="form-row">
+            <div class="form-group col-md-5">
+                <label for="fullname_id" class="text-black font-weight-bold">Full Name</label>
+                <input type="text" name="fullname" class="form-control" id="fullname_id" placeholder="Your Full Name" required>
+            </div>
+            <div class="form-group col-md-3">
+                <label for="age_id" class="text-black font-weight-bold">The Age</label>
+                <input type="number" name="age" class="form-control" id="age_id" placeholder="The Age">
+            </div>
+            <div class=" col-md-3 form-check form-switch form-check-inline">
+                <input class="form-check-input" role="switch" type="checkbox" id="ch_dis_id" name="disease" value="Yes">
+                <label class="form-check-label text-black font-weight-bold" for="ch_dis_id">Have Chronic Diseases
+                </label>
+            </div>
+        </div>
+
+        <div class="form-row">
+            <div class="form-group col-md-4">
+                <label for="inputEmail4" class="text-black font-weight-bold">Email</label>
+                <input type="email" name="email" class="form-control" id="inputEmail4" placeholder="Email" required>
+            </div>
+            <div class="form-group col-md-4">
+                <label for="whatsapp_id" class="text-black font-weight-bold">WhatsApp Number</label>
+                <input type="tel" class="form-control" name="phone" id="whatsapp_id" placeholder="Your WhatsApp Number">
+            </div>
+            <div class="form-group col-md-4">
+                <label for="date_from" class="text-black font-weight-bold">Date </label>
+                <input name="date" type="date" class="form-control" id="date_from">
+            </div>
+        </div>
+
+
+        <label class="text-black font-weight-bold" for="dent-typ-id">Treatment Type</label>
+        <div class="form-row" style="padding-left:20px" id="dent-typ-id">
+            <div class="form-group col-md-3">
+                <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="Hollywood Smile
+                    (Cosmetic)" name="choice1">
+                <label class="form-check-label text-black font-weight-bold" for="inlineCheckbox1">Hollywood Smile
+                    (Cosmetic)</label>
+            </div>
+            <div class="form-group col-md-3">
+                <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="Orthodontics" name="choice2">
+                <label class="form-check-label text-black font-weight-bold" for="inlineCheckbox2">Orthodontics</label>
+            </div>
+            <div class="form-group col-md-3">
+                <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="Dental
+                    Implants" name="choice3">
+                <label class="form-check-label text-black font-weight-bold" for="inlineCheckbox3">Dental
+                    Implants</label>
+            </div>
+            <div class="form-group col-md-3">
+                <input class="form-check-input" type="checkbox" id="inlineCheckbox4" value="Other" name="choice4">
+                <label class="form-check-label text-black font-weight-bold" for="inlineCheckbox4">Other</label>
+            </div>
+        </div>
+
+        <div class=" col-md-3 form-check form-switch form-check-inline">
+            <input class="form-check-input" name="full" value="Yes" role="switch" type="checkbox" id="full_id">
+            <label class="form-check-label text-black font-weight-bold" for="full_id">
+                Comprehensive Services
+            </label>
+        </div>
+
+        <p class="text-muted">Comprehensive Services included full services (visa, tickets, transfer from the airport, hotel, transfer to-from the hospital, transfer to the airport at the end of treatment</p>
+
+        <div class="form-row" id="comprehensive" style="display:none;">
+
+            <div class="form-group col-md-6">
+                <label for="inputState" class="text-black font-weight-bold">The Class</label>
+                <select id="inputState" class="form-control" name="class_status">
+                    <option value="No" selected>-------</option>
+                    <option value="Economy">Economy</option>
+                    <option value="Business">Business</option>
+                </select>
+            </div>
+            <div class="form-group col-md-6">
+                <label for="pno" class="text-black font-weight-bold">Number of People</label>
+                <input type="number" name="person_no" class="form-control" id="pno" placeholder="How many Person">
+            </div>
+
+            <div class=" col-md-6 form-check form-switch form-check-inline">
+                <input class="form-check-input" role="switch" type="checkbox" id="child_id" name="have_child" value="Have Children">
+                <label class="form-check-label text-black font-weight-bold" for="child_id">Have Children
+                </label>
+            </div>
+
+            <div class="form-group col-md-6" style="display:none;">
+                <label for="child_no" class="text-black font-weight-bold">Number of Children</label>
+                <input type="number" name="child_no" class="form-control" id="child_no" placeholder="How many children">
+                <p class="text-muted">Please show the age of each child in the "Notes Field"</p>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="note_id" class="text-black font-weight-bold">Other Notes</label>
+            <textarea class="form-control" name="note" id="note_id" cols="20" rows="7a"></textarea>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Send</button>
+    </form>
+</div>
+
+<script>
+    child_id.onchange = function() {
+        if(this.checked){
+        document.querySelector("#child_no").closest('.form-group').style.display = "";
+      }
+      else{
+        document.querySelector("#child_no").closest('.form-group').style.display = "none";
+      }
+    }
+
+    full_id.onchange = function() {
+        if(this.checked){
+        document.querySelector("#comprehensive").style.display = "";
+      }
+      else{
+        document.querySelector("#comprehensive").style.display = "none";
+      }
+    }
+
+
+
+    setTimeout(() => {
+      const box = document.querySelector('.alert-success');
+      box.style.display = 'none';
+    }, 10000);
+
+    setTimeout(() => {
+      const box = document.querySelector('.alert-warning');
+      box.style.display = 'none';
+    }, 20000);
+
+
+</script>
+
+{% endblock %}

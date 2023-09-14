@@ -1,0 +1,137 @@
+{% extends 'en/base/base.html' %}
+
+{% load static %}
+
+{% block title %} Home {% endblock %}
+
+{% block content %}
+
+
+<!--Swiper-->
+<section class="section swiper-container swiper-slider swiper-slider-1 context-dark" data-loop="true"
+         data-autoplay="5000" data-simulate-touch="false">
+    <div class="swiper-wrapper" style="text-shadow:1px 1px 2px black">
+        <div class="swiper-slide" data-slide-bg="{% static 'images/banner/airport.webp' %}">
+            <div class="swiper-slide-caption section-lg">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-9 col-lg-7 offset-md-1 offset-xxl-0">
+                            <h1>
+                                <span class="d-block" data-caption-animate="fadeInUp" data-caption-delay="100"><b>Do-Travel</b> Tour Agency</span>
+                                <span class="d-block text-light" data-caption-animate="fadeInUp"
+                                      data-caption-delay="200">Tourism, Healthcare and Education Services</span>
+                            </h1>
+                            <p class="lead" data-caption-animate="fadeInUp" data-caption-delay="350">
+                                The journey of a thousand miles begins with a single step.
+                            </p>
+                            <div class="button-wrap-default" data-caption-animate="fadeInUp"
+                                 data-caption-delay="450"><a class="button button-secondary-text" href="{% url 'tickets' %}">Read
+                                more</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="swiper-slide" data-slide-bg="{% static 'images/banner/airplane1.webp' %}">
+            <div class="swiper-slide-caption section-lg">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-9 col-lg-7 offset-md-1 offset-xxl-0">
+                            <h1>
+                                <span class="d-block" data-caption-animate="fadeInUp" data-caption-delay="100"><b>Do-Travel</b> Tour Agency</span>
+                                <span class="d-block text-light" data-caption-animate="fadeInUp"
+                                      data-caption-delay="200">Tourism, Healthcare and Education Services</span>
+                            </h1>
+                            <p class="lead" data-caption-animate="fadeInUp" data-caption-delay="350">
+                                The world is a book and those who do not travel read only one page.
+                            </p>
+                            <div class="button-wrap-default" data-caption-animate="fadeInUp"
+                                 data-caption-delay="450"><a class="button button-secondary-text" href="{% url 'trips' %}">Read
+                                more</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="swiper-slide" data-slide-bg="{% static 'images/banner/airplane2.webp' %}">
+            <div class="swiper-slide-caption section-lg">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-9 col-lg-7 offset-md-1 offset-xxl-0">
+                            <h1>
+                                <span class="d-block" data-caption-animate="fadeInUp" data-caption-delay="100"><b>Do-Travel</b> Tour Agency</span>
+                                <span class="d-block text-light" data-caption-animate="fadeInUp"
+                                      data-caption-delay="200">Tourism, Healthcare and Education Services</span>
+                            </h1>
+                            <p class="lead" data-caption-animate="fadeInUp" data-caption-delay="350">
+                                Remember that happiness is a way of travel, not a destination.
+                            </p>
+                            <div class="button-wrap-default" data-caption-animate="fadeInUp"
+                                 data-caption-delay="450"><a class="button button-secondary-text" href="{% url 'booking' %}">Read
+                                more</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--Swiper Pagination-->
+    <div class="swiper-pagination-wrap">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-9 col-lg-7 offset-md-1 offset-xxl-0">
+                    <div class="swiper-pagination"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Our Offers -->
+<section class="section section-md"
+         style="background:linear-gradient(0deg, rgba(196,195,219,1) 0%, rgba(246,246,250,1) 46%, rgba(201,244,252,1) 100%);">
+    <div class="container">
+        <h1>Our Offers</h1>
+        <div class="row">
+            {% for offer in offers %}
+            <div class="col-sm-6 p-2">
+                <div class="card h-100">
+                    <img class="card-img-top" src="{{ offer.image.url }}" alt="{{ offer.title }}">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ offer.title }}</h5>
+                        <p class="card-text p-2 text-black font-weight-bold  box-show">{{ offer.description }}</p>
+                        <a href="{% url 'offer_details' offer.id %}" class="btn btn-primary">Offer Details</a>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+
+<!-- Our Vision-->
+<section class="section bg-default section-md">
+    <div class="container">
+        <div class="row row-30">
+            <div class="col-md-12" style="text-shadow:1px 1px 2px black">
+                <h2 class="title-icon">Our Vision</h2>
+                <p class="big text-justify text-black  font-weight-bold">
+                    We always strive to achieve the satisfaction of our customers by providing the best services
+                    We are working to meet all their needs and achieve their aspirations, to maintain our prestigious
+                    position in the world of tourism and travel
+                    And to be the first company at the local and regional levels in the field of tourism, travel and
+                    related services
+                    . In addition to continuing to develop our services and developing new services that keep pace with
+                    the development of the tourism sector in Turkey and the world at large.
+                </p>
+                <a href="{% url 'contacts' %}" class="btn btn-primary m-3">Contact Us</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock %}

@@ -1,0 +1,178 @@
+{% extends 'en/base/base.html' %}
+
+{% load static %}
+
+{% block title %} Education Services {% endblock %}
+
+{% block content %}
+
+<div class="jumbotron jumbotron-fluid" style="width:100%;background-image:url({% static 'images/offers/study.jpg' %});
+background-repeat:no-repeat;background-size:cover;background-attachment:fixed;text-align:center;">
+    <h1 style="color:black;text-shadow:0 1px 2px black;padding:25px;">Education Services</h1>
+    <div class="container p-5"
+         style="background-color:rgba(256, 256, 256, 0.5); border-radius:10px;text-shadow:0 1px 2px black">
+        <h3 class="card-title text-black">Education Services</h3>
+        <h6 class="card-text text-start text-dark">
+            Studying in Turkey: <br>
+            - It is one of the best countries in which you can study easily and without complications.
+            <br>
+            - If you are awarded a scholarship to study in Turkey, you will get health insurance and a card that exempts
+            you from bearing the costs of public transportation and many other things.
+            <br>
+            - There are a large number of public universities in Turkey that are distinguished by the quality of
+            education, and there are public universities that occupy advanced positions at the global level.
+            <br>
+            - Turkish public universities are internationally recognized. <br>
+            - The costs of studying in public universities are very low compared to the rest of the world that provides
+            distinguished education.
+            <br>
+            - You can find out the application dates for public and private Turkish universities through the
+            university's website.
+            <br>
+            - There are Turkish public universities that allow you to study in English, which qualifies you to work in
+            European countries easily and master the English language.
+            <br>
+            - There are Turkish public and private universities that offer distinguished study programs in the field of
+            medicine, knowing that the competition to enroll in one of the medical study programs in public universities
+            is very high.
+            <br>
+            - Medical study programs in public universities are designed according to high standards and are under the
+            supervision of the Turkish government and the Ministry of Higher Education to ensure the presence of medical
+            graduates with a good degree of excellence.
+            <br>
+            In Do-Travel we can help you To get admission in one of these prestigious universities, you have only to
+            write us, we'll answer you ASAP.
+        </h6>
+    </div>
+</div>
+
+
+<div class="container shadow">
+
+    {% if success_msg != '' %}
+    <div class="alert alert-success" id="success" role="alert">
+        <h5>{{ success_msg }}</h5>
+    </div>
+    {% endif %}
+
+    {% if errors != '' %}
+    <div class="alert alert-warning" role="alert">
+       <h5> {{ errors }}</h5>
+    </div>
+    {% endif %}
+
+    <form action="{% url 'education' %}" method="post" class="p-5 m-5" required>
+        {% csrf_token %}
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label for="fullname_id" class="text-black font-weight-bold">Full Name</label>
+                <input type="text" name="fullname" class="form-control" id="fullname_id" placeholder="Your Full Name"  required>
+            </div>
+           <div class="form-group col-md-6">
+                <label for="nation_id" class="text-black font-weight-bold">Nationality</label>
+                <input type="text" name="nationality" class="form-control" id="nation_id" placeholder="Your Nationality"  required>
+            </div>
+        </div>
+
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label for="gender_id" class="text-black font-weight-bold">Gender</label>
+                <select id="gender_id" class="form-control" name="gender">
+                    <option value="No" selected>-------</option>
+                    <option value="Female">Female</option>
+                    <option value="Male">Male</option>
+                </select>
+            </div>
+            <div class="form-group col-md-6">
+                <label for="age_id" class="text-black font-weight-bold">The Age</label>
+                <input type="number" name="age" class="form-control" id="age_id" placeholder="Your Age">
+            </div>
+        </div>
+
+        <div class="form-row">
+            <div class="form-group col-md-4">
+                <label for="inputEmail4" class="text-black font-weight-bold">Email</label>
+                <input type="email" name="email" class="form-control" id="inputEmail4" placeholder="Email"  required>
+            </div>
+            <div class="form-group col-md-4">
+                <label for="whatsapp_id" class="text-black font-weight-bold">WhatsApp Number</label>
+                <input type="tel" class="form-control" name="phone" id="whatsapp_id" placeholder="Your WhatsApp Number">
+            </div>
+            <div class="form-group col-md-4">
+                <label for="date_from" class="text-black font-weight-bold">Date </label>
+                <input name="date_from" type="date" class="form-control" id="date_from">
+            </div>
+        </div>
+
+        <div class="form-row">
+
+            <div class="form-group col-md-4">
+                <label for="special_finish_id" class="text-black font-weight-bold">You Have Finished</label>
+                <select id="special_finish_id" class="form-control" name="finish">
+                    <option value="No" selected>-------</option>
+                    <option value="High School">High School</option>
+                    <option value="Bachelor's Degree">Bachelor's Degree</option>
+                    <option value="Master's Degree">Master's Degree</option>
+                    <option value="PHD">PHD</option>
+                </select>
+            </div>
+
+            <div class="form-group col-md-4">
+                <label for="special_id" class="text-black font-weight-bold">You Want to Study</label>
+                <select id="special_id" class="form-control" name="want">
+                    <option value="No" selected>-------</option>
+                    <option value="Bachelor's Degree">Bachelor's Degree</option>
+                    <option value="Master's Degree">Master's Degree</option>
+                    <option value="PHD">PHD</option>
+                </select>
+            </div>
+            <div class="form-group col-md-4">
+                <label for="city_id" class="text-black font-weight-bold">Choose The city or the university</label>
+                <input type="text" name="city" class="form-control" id="city_id" placeholder="The city you want to study in">
+            </div>
+
+        </div>
+
+        <div class="form-group">
+            <label for="note_id" class="text-black font-weight-bold">Other Notes</label>
+            <textarea class="form-control" name="note" id="note_id" cols="20" rows="7a"></textarea>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Send</button>
+    </form>
+
+</div>
+
+<script>
+    child_id.onchange = function() {
+        if(this.checked){
+        document.querySelector("#child_no").closest('.form-group').style.display = "";
+      }
+      else{
+        document.querySelector("#child_no").closest('.form-group').style.display = "none";
+      }
+    }
+
+    full_id.onchange = function() {
+        if(this.checked){
+        document.querySelector("#comprehensive").style.display = "";
+      }
+      else{
+        document.querySelector("#comprehensive").style.display = "none";
+      }
+    }
+
+    setTimeout(() => {
+      const box = document.querySelector('.alert-success');
+      box.style.display = 'none';
+    }, 10000);
+
+    setTimeout(() => {
+      const box = document.querySelector('.alert-warning');
+      box.style.display = 'none';
+    }, 20000);
+
+
+</script>
+
+{% endblock %}

@@ -1,0 +1,130 @@
+{% extends 'ar/base/base.html' %}
+
+{% load static %}
+
+{% block title %} تواصل معنا {% endblock %}
+
+{% block content %}
+
+
+<!-- Contacts-->
+<section class="section section-md text-end" dir="rtl">
+    <div class="container">
+        <h2>للتواصل معنا</h2>
+        <div class="row row-40">
+            <div class="col-md-10 col-lg-6">
+                <div class="group-lg group-wrap-6">
+                    <div class="group-item">
+                        <ul class="contact-list font-weight-bold">
+                            <li>
+                                <h6 class="unit unit-spacing-xs">
+                                    <div class="unit-left">
+                                        <div class="icon icon-lg mdi mdi-whatsapp"></div>
+                                    </div>
+                                    <div class="unit-body"><a href="https://wa.me/message/PTQAEITL5M53O1"
+                                                              target="_blank">+90 (534) 949 9345</a></div>
+                                </h6>
+                            </li>
+                            <li>
+                                <h6 class="unit unit-spacing-xs">
+                                    <div class="unit-left">
+                                        <div class="icon icon-lg mdi mdi-email"></div>
+                                    </div>
+                                    <div class="unit-body"><a class="d-inline-block"
+                                                              href="mailto:avilinmark1@gmail.com">info@do-travel.com</a>
+                                    </div>
+                                </h6>
+                            </li>
+                            <li>
+                                <h6 class="unit unit-spacing-xs">
+                                    <div class="unit-left">
+                                        <div class="icon icon-lg mdi mdi-twitter"></div>
+                                    </div>
+                                    <div class="unit-body"><a class="d-inline-block"
+                                                              href="{% url 'contacts' %}">Twitter</a></div>
+                                </h6>
+                            </li>
+                            <li>
+                                <h6 class="unit unit-spacing-xs">
+                                    <div class="unit-left">
+                                        <div class="icon icon-lg mdi mdi-facebook"></div>
+                                    </div>
+                                    <div class="unit-body"><a class="d-inline-block" href="{% url 'contacts' %}">Facebook</a>
+                                    </div>
+                                </h6>
+                            </li>
+                            <li>
+                                <h6 class="unit unit-spacing-xs">
+                                    <div class="unit-left">
+                                        <div class="icon icon-lg mdi mdi-instagram"></div>
+                                    </div>
+                                    <div class="unit-body"><a class="d-inline-block" href="{% url 'contacts' %}">Instagram</a>
+                                    </div>
+                                </h6>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-10 col-lg-6 shadow-lg p-3 text-end" dir="rtl">
+
+
+                <h5>راسلنا</h5>
+
+                {% if success_msg != '' %}
+                <div class="alert alert-success p-2" id="success" role="alert">
+                    <h6>{{ success_msg }}</h6>
+                </div>
+                {% endif %}
+
+                <form class="rd-form text-black font-weight-bold text-end" method="post"
+                      action="{% url 'contacts_ar' %}" dir="rtl">
+                    {% csrf_token %}
+                    <div class="row row-10">
+                        <div class="col-md-6">
+                            <div class="form-wrap">
+                                <input class="form-input" id="contact-first-name" type="text" name="name" required>
+                                <label class="form-label" for="contact-first-name">الاسم الكامل</label>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-wrap">
+                                <input class="form-input" id="contact-last-name" type="tel" name="phone" required>
+                                <label class="form-label" for="contact-last-name">رقم الواتساب</label>
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            <div class="form-wrap">
+                                <label class="form-label" for="contact-message">رسالتك</label>
+                                <textarea class="form-input" id="contact-message" name="message" required></textarea>
+                            </div>
+                        </div>
+                        <div class="col-md-7 col-xl-8">
+                            <div class="form-wrap">
+                                <input class="form-input" id="contact-email" type="email" name="email" required>
+                                <label class="form-label" for="contact-email">البريد الالكتروني</label>
+                            </div>
+                        </div>
+                        <div class="col-md-5 col-xl-4">
+                            <button class="button button-size-1 button-block button-primary" type="submit">إرسال
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<script>
+      setTimeout(() => {
+      const box = document.querySelector('.alert-success');
+      box.style.display = 'none';
+    }, 10000);
+
+
+</script>
+
+
+{% endblock %}

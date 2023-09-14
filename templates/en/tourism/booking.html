@@ -1,0 +1,157 @@
+{% extends 'en/base/base.html' %}
+
+{% load static %}
+
+{% block title %} Hotels Booking {% endblock %}
+
+{% block content %}
+
+<div class="jumbotron jumbotron-fluid img-fluid" style="width:100%;background-image:url({% static 'images/offers/hotel.jpg' %});
+background-repeat:no-repeat;background-size:cover;background-attachment:fixed;text-align:center;.img-fluid;">
+    <h1 style="color:black;text-shadow:0 1px 2px black;padding:25px;">Hotels Booking</h1>
+    <div class="container p-5" style="background-color:rgba(256, 256, 256, 0.5); border-radius:10px;text-shadow:0 1px 2px black">
+
+            <h3 class="card-title text-black">Hotel Booking With Do-Travel</h3>
+            <h6 class="card-text text-start text-dark">
+                By choosing Do-Travel you can always be calm and only enjoy your vacation 😉 <br><br>
+                Do-Travel for Tourism, Medical and Education services, can make all your dreams come true. <br><br>
+                 Do-Travel, we are proud of our high-level services to manage our clients' travel plans, in addition to our customized services that are available to meet all of our clients' needs and requirements.
+                <br><br>
+                With us, you can always make your hotel booking, to be sure that you will
+                always find the best places and prices, you have only to write us, we'll answer you ASAP.
+
+                </h6>
+
+    </div>
+</div>
+
+
+<div class="container shadow">
+
+
+   {% if success_msg != '' %}
+    <div class="alert alert-success" id="success" role="alert">
+        <h5>{{ success_msg }}</h5>
+    </div>
+    {% endif %}
+
+    {% if errors != '' %}
+    <div class="alert alert-warning" role="alert">
+       <h5> {{ errors }}</h5>
+    </div>
+    {% endif %}
+
+
+    <form action="{% url 'booking' %}" method="post" class="p-5 m-5">
+        {% csrf_token %}
+        <div class="form-group">
+            <label for="fullname_id" class="text-black font-weight-bold">Full Name</label>
+            <input type="text" name="fullname" class="form-control" id="fullname_id" placeholder="Your Full Name" required>
+        </div>
+
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label for="inputEmail4" class="text-black font-weight-bold">Email</label>
+                <input type="email" name="email" class="form-control" id="inputEmail4" placeholder="Email" required>
+            </div>
+            <div class="form-group col-md-6">
+                <label for="whatsapp_id" class="text-black font-weight-bold">WhatsApp Number</label>
+                <input type="tel" class="form-control" name="phone" id="whatsapp_id" placeholder="Your WhatsApp Number">
+            </div>
+        </div>
+
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label for="country_id" class="text-black font-weight-bold">The Country</label>
+                <input type="text" name="country" class="form-control" id="country_id" placeholder="The Country" required>
+            </div>
+            <div class="form-group col-md-6">
+                <label for="city_id" class="text-black font-weight-bold">The City</label>
+                <input type="text" class="form-control" name="city" id="city_id" placeholder="The City" required>
+            </div>
+        </div>
+
+        {% if date_error != '' %}
+        <div class="alert alert-warning" id="date_error" role="alert">
+           <h5> {{ date_error }} </h5>
+        </div>
+        {% endif %}
+
+        <div class="form-row">
+            <div class="form-group col-md-4">
+                <label for="date_from" class="text-black font-weight-bold">From </label>
+                <input name="date_from" type="date" class="form-control" id="date_from">
+            </div>
+            <div class="form-group col-md-4">
+                <label for="date_to" class="text-black font-weight-bold">To </label>
+                <input name="date_to" type="date" class="form-control" id="date_to">
+            </div>
+            <div class="form-group col-md-4">
+                <label for="inputState" class="text-black font-weight-bold">The Class</label>
+                <select id="inputState" class="form-control" name="class_status">
+                    <option selected value="No">-------</option>
+                    <option value="Economy">Economy</option>
+                    <option value="Business">Business</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="form-row">
+            <div class="form-group col-md-4">
+                <label for="pno" class="text-black font-weight-bold">Number of People</label>
+                <input type="number" name="person_no" class="form-control" id="pno" placeholder="How many Person">
+            </div>
+
+            <div class=" col-md-3 form-check form-switch form-check-inline">
+
+                <input class="form-check-input" role="switch" type="checkbox" id="child_id" name="have_child">
+                <label class="form-check-label text-black font-weight-bold" for="child_id">Have Children
+                </label>
+            </div>
+
+            <div class="form-group col-md-4" style="display:none;">
+                <label for="child_no" class="text-black font-weight-bold">Number of Children</label>
+                <input type="number" class="form-control" name="child_no" id="child_no" placeholder="How many children">
+                <p class="text-muted">Please show the age of each child in the "Notes Field"</p>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="note_id" class="text-black font-weight-bold">Other Notes</label>
+            <textarea class="form-control" name="note" id="note_id" cols="20" rows="7a"></textarea>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Send</button>
+    </form>
+
+    {% if error_msg != '' %}
+    <div class="alert alert-warning" id="error" role="alert">
+        <h5>{{ error_msg }}</h5>
+    </div>
+    {% endif %}
+</div>
+
+<script>
+    child_id.onchange = function() {
+        if(this.checked){
+        document.querySelector("#child_no").closest('.form-group').style.display = "";
+      }
+      else{
+        document.querySelector("#child_no").closest('.form-group').style.display = "none";
+      }
+    }
+
+
+    setTimeout(() => {
+      const box = document.querySelector('.alert-success');
+      box.style.display = 'none';
+    }, 10000);
+
+    setTimeout(() => {
+      const box = document.querySelector('.alert-warning');
+      box.style.display = 'none';
+    }, 20000);
+
+</script>
+
+{% endblock %}

@@ -1,0 +1,167 @@
+{% load static %}
+<!--Header-->
+<!--<div class="ie-panel"><a href="http://windows.microsoft.com/en-US/internet-explorer/">-->
+<!--    <img src="{% static 'images/orgi/ie8-panel/warning_bar_0000_us.jpg' %}" height="42" width="820"-->
+<!--         alt="You are using an outdated browser. For a faster, safer browsing experience, upgrade for free today."></a>-->
+<!--</div>-->
+<!--<div class="preloader">-->
+<!--    <div class="preloader-body">-->
+<!--        <div class="loader">-->
+<!--            <div></div>-->
+<!--            <div></div>-->
+<!--            <div></div>-->
+<!--            <div></div>-->
+<!--            <div></div>-->
+<!--            <div></div>-->
+<!--            <div></div>-->
+<!--            <div></div>-->
+<!--            <div></div>-->
+<!--        </div>-->
+<!--        <p>تحميل...</p>-->
+<!--    </div>-->
+<!--</div>-->
+<!--<div class="page">-->
+
+    <header class="section page-header rd-navbar-transparent-wrap">
+        <!--RD Navbar-->
+        <div class="rd-navbar-wrap">
+            <nav class="rd-navbar rd-navbar-transparent" data-layout="rd-navbar-fixed" data-sm-layout="rd-navbar-fixed"
+                 data-md-layout="rd-navbar-fixed" data-md-device-layout="rd-navbar-fixed"
+                 data-lg-layout="rd-navbar-static" data-lg-device-layout="rd-navbar-static"
+                 data-xl-layout="rd-navbar-static" data-xl-device-layout="rd-navbar-static"
+                 data-lg-stick-up-offset="20px" data-xl-stick-up-offset="20px" data-xxl-stick-up-offset="20px"
+                 data-lg-stick-up="true" data-xl-stick-up="true" data-xxl-stick-up="true">
+                <div class="rd-navbar-collapse-toggle rd-navbar-fixed-element-1"
+                     data-rd-navbar-toggle=".rd-navbar-collapse"><span></span></div>
+                <div class="rd-navbar-aside-outer rd-navbar-collapse" dir="ltr">
+                    <div class="rd-navbar-aside">
+                        <div class="rd-navbar-info">
+                            <div class="icon novi-icon mdi mdi-whatsapp"></div>
+                            <a href="https://wa.me/message/PTQAEITL5M53O1" target="_blank">+90 (534) 949 9345</a>
+                        </div>
+                        {% if user.is_authenticated %}
+                        <ul class="list-lined">
+                            <li dir='rtl'>مرحبا  &nbsp; {{ user.first_name }} &nbsp; {{ user.last_name }} </li>
+                            <li><a href="{% url 'logout_ar' %}">تسجيل الخروج</a></li>
+                        </ul>
+                        {% else %}
+                        <ul class="list-lined">
+                            <li><a href="{% url 'login_ar' %}">الدخول</a></li>
+                            <li><a href="{% url 'register_ar' %}">التسجيل</a></li>
+                        </ul>
+                        {% endif %}
+                    </div>
+                </div>
+                <div class="rd-navbar-main-outer" dir="rtl">
+                    <div class="rd-navbar-main-inner">
+                        <div class="rd-navbar-main" style="height:50px;">
+                            <!--RD Navbar Panel-->
+                            <div class="rd-navbar-panel">
+                                <!--RD Navbar Toggle-->
+                                <button class="rd-navbar-toggle p-5 m-5" data-rd-navbar-toggle=".rd-navbar-nav-wrap">
+                                    <span></span></button>
+                                <!--RD Navbar Brand-->
+                                <div class="rd-navbar-brand">
+                                    <!--Brand-->
+                                    <a class="brand" href="{% url 'home_ar' %}">
+                                        <img class="brand-logo-dark" src="{% static 'images/logos/travel1.png' %}"
+                                             style="height:45px; width:100px;" alt="logo"/>
+                                        <img class="brand-logo-light" src="{% static 'images/logos/travel1.png' %}"
+                                             style="height:45px; width:100px;" alt="logo"/>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="rd-navbar-main-element text-end" dir="rtl">
+                                <div class="rd-navbar-nav-wrap text-end" dir="rtl">
+                                    <ul class="rd-navbar-nav text-end" dir="rtl">
+                                        <li class="rd-nav-item pl-4">
+                                            <a class="rd-nav-link" href="{% url 'home_ar' %}">
+                                            الرئيسية</a>
+                                        </li>
+                                        <li class="rd-nav-item"><a class="rd-nav-link"
+                                                                   href="{% url 'about_ar' %}">من نحن</a>
+                                        </li>
+                                        <li class="rd-nav-item dropdown">
+                                            <a class="rd-nav-link dropdown-toggle" href="#" role="button"
+                                               data-bs-toggle="dropdown" aria-expanded="false">
+                                                السياحة
+                                            </a>
+                                            <ul class="dropdown-menu text-end" dir="rtl">
+                                                <li><a class="dropdown-item nav-link" href="{% url 'tickets_ar' %}">بطاقات
+                                                    السفر</a></li>
+                                                <li><a class="dropdown-item nav-link" href="{% url 'booking_ar' %}">الحجز
+                                                    الفندقي</a></li>
+                                                <li><a class="dropdown-item nav-link" href="{% url 'trips_ar' %}">خطط رحلتك
+                                                    معنا</a></li>
+                                                <li><a class="dropdown-item nav-link" href="{% url 'visas_ar' %}">احصل على
+                                                    الفيزا</a></li>
+                                            </ul>
+                                        </li>
+                                        <li class="rd-nav-item dropdown">
+                                            <a class="rd-nav-link dropdown-toggle" href="#" role="button"
+                                               data-bs-toggle="dropdown" aria-expanded="false">
+                                                الرعاية الصحية
+                                            </a>
+                                            <ul class="dropdown-menu text-end" dir="rtl">
+                                                <li><a class="dropdown-item nav-link" href="{% url 'hair_ar' %}">زراعة
+                                                    الشعر</a></li>
+                                                <li><a class="dropdown-item nav-link" href="{% url 'dentist_ar' %}">طب
+                                                    الأسنان</a></li>
+                                                <li><a class="dropdown-item nav-link" href="{% url 'optic_ar' %}">طب
+                                                    العيون</a></li>
+                                                <li><a class="dropdown-item nav-link" href="{% url 'plastic_ar' %}">الجراحة
+                                                    التجميلية</a></li>
+                                                <li><a class="dropdown-item nav-link" href="{% url 'general_ar' %}">العلاج
+                                                    العام</a></li>
+                                            </ul>
+                                        </li>
+                                        <li class="rd-nav-item">
+                                            <a class="rd-nav-link" href="{% url 'education_ar' %}">القبول الدراسي</a>
+                                        </li>
+                                        <li class="rd-nav-item"><a class="rd-nav-link" href="{% url 'contacts_ar' %}">تواصل
+                                            معنا</a>
+                                        </li>
+                                        {% if user.is_superuser %}
+                                        <li class="rd-nav-item dropdown">
+                                            <a class="rd-nav-link dropdown-toggle" href="#" role="button"
+                                               data-bs-toggle="dropdown" aria-expanded="false" dir="rtl">
+                                                الإدارة
+                                            </a>
+                                            <ul class="dropdown-menu text-end">
+                                                <li><a class="dropdown-item nav-link" href="{% url 'customers_ar' %}">العملاء</a>
+                                                </li>
+                                                <li>
+                                                    <a class="dropdown-item nav-link" href="{% url 'add_offers_ar' %}">
+                                                        إضافة عروض
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                        </li>
+                                        {% endif %}
+                                        <li class="rd-nav-item dropdown">
+                                            <a class="rd-nav-link dropdown-toggle" href="#" role="button"
+                                               data-bs-toggle="dropdown" aria-expanded="false">
+                                                <img src="{% static 'images/logos/translate.png' %}" alt="languages"  width="25" height="25">  اللغات
+                                            </a>
+                                            <ul class="dropdown-menu text-end" dir="rtl">
+                                                <li>
+                                                    <a class="dropdown-item nav-link" href="{% url 'home_ar' %}">
+                                                        <img alt="English" src="https://img.freepik.com/free-vector/united-arab-emirates-flag-round-badge_1308-73285.jpg?w=740&t=st=1667671527~exp=1667672127~hmac=75a246b9b57352e2b24221378505dc5ecefdf0bc07b1047f17e71c1cef8c8596" width="25" height="25">  العربية
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a class="dropdown-item nav-link" href="{% url 'home' %}">
+                                                        <img alt="English" src="https://img.freepik.com/free-vector/america-flag-design-round-badge_1308-72238.jpg?w=740&t=st=1667671630~exp=1667672230~hmac=24e9bf08b9a666a5f62d20f55de9928bb73c2e793a31cdc0eb138cc886f955ec" width="25" height="25"> English
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </header>

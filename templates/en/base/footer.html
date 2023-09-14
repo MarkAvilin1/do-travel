@@ -1,0 +1,112 @@
+{% load static %}
+<!--Footer-->
+<footer class="section footer-classic">
+    <div class="footer-inner-1">
+        <div class="container">
+            <div class="row row-40">
+                <div class="col-md-5 col-lg-3">
+                    <h5>Our Contacts</h5>
+                    <ul class="contact-list font-weight-bold">
+                        <li>
+                            <div class="unit unit-spacing-xs">
+                                <div class="unit-left">
+                                    <div class="icon icon-sm icon-primary novi-icon mdi mdi-whatsapp"></div>
+                                </div>
+                                <div class="unit-body"><a href="https://wa.me/message/PTQAEITL5M53O1" target="_blank">+90
+                                    (534) 949 9345</a></div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="unit unit-spacing-xs">
+                                <div class="unit-left">
+                                    <div class="icon icon-sm icon-primary novi-icon mdi mdi-email"></div>
+                                </div>
+                                <div class="unit-body"><a class="d-inline-block" href="mailto:avilinmark1@gmail.com">info@do-travel.com</a>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="unit unit-spacing-xs">
+                                <div class="unit-left">
+                                    <div class="icon icon-sm icon-primary novi-icon mdi mdi-twitter"></div>
+                                </div>
+                                <div class="unit-body"><a class="d-inline-block" href="{% url 'contacts' %}">Twitter</a>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="unit unit-spacing-xs">
+                                <div class="unit-left">
+                                    <div class="icon icon-sm icon-primary novi-icon mdi mdi-facebook"></div>
+                                </div>
+                                <div class="unit-body"><a class="d-inline-block"
+                                                          href="{% url 'contacts' %}">Facebook</a></div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="unit unit-spacing-xs">
+                                <div class="unit-left">
+                                    <div class="icon icon-sm icon-primary novi-icon mdi mdi-instagram"></div>
+                                </div>
+                                <div class="unit-body"><a class="d-inline-block"
+                                                          href="{% url 'contacts' %}">Instagram</a></div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-md-6 col-lg-5">
+                    <h5>Links</h5>
+                    <div class="row row-5 justify-content-between">
+                        <div class="col-sm-6">
+                            <ul class="footer-list big">
+                                <li><a href="{% url 'about' %}">About</a></li>
+                                <li><a href="{% url 'tickets' %}">Book Tickets</a></li>
+                                <li><a href="{% url 'booking' %}">Hotels Booking</a></li>
+                                <li><a href="{% url 'trips' %}">Plan Your Trip</a></li>
+                                <li><a href="{% url 'visas' %}">Apply for Visa</a></li>
+                                <li><a href="{% url 'education' %}">Education Services</a></li>
+                            </ul>
+                        </div>
+                        <div class="col-sm-4 col-lg-6 col-xxl-5">
+                            <ul class="footer-list big">
+                                <li><a href="{% url 'dentist' %}">Oral and Dental Healthcare</a></li>
+                                <li><a href="{% url 'hair' %}">Hair Transplant</a></li>
+                                <li><a href="{% url 'optic' %}">Ophthalmology</a></li>
+                                <li><a href="{% url 'plastic' %}">Plastic Surgery</a></li>
+                                <li><a href="{% url 'general' %}">General Treatment</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-12 col-lg-4">
+                    <h5>Partners</h5>
+                    <div class="row row-30 align-items-center text-center">
+                        <div class="col-6 col-md-4 col-lg-6"><a class="link-image" href="#"><img
+                                src="{% static 'images/orgi/emirates-airways.png' %}" alt="" width="121"
+                                height="16"/></a></div>
+                        <div class="col-6 col-md-4 col-lg-6"><a class="link-image" href="#"><img
+                                src="{% static 'images/orgi/klm.jpg' %}" alt="" width="121" height="16"/></a></div>
+                        <div class="col-6 col-md-4 col-lg-6"><a class="link-image" href="#"><img
+                                src="{% static 'images/orgi/Gulf_Air_logo.png' %}" alt="" width="121" height="16"/></a>
+                        </div>
+                        <div class="col-6 col-md-4 col-lg-6"><a class="link-image" href="#"><img
+                                src="{% static 'images/orgi/lufthansa.jpg' %}" alt="" width="121" height="16"/></a>
+                        </div>
+                        <div class="col-6 col-md-4 col-lg-6"><a class="link-image" href="#"><img
+                                src="{% static 'images/orgi/Turkish_Airlines_logo.png' %}" alt="" width="121"
+                                height="16"/></a></div>
+                        <div class="col-6 col-md-4 col-lg-6"><a class="link-image" href="#"><img
+                                src="{% static 'images/orgi/Qatar_Airways_Logo.png' %}" alt="" width="121" height="16"/></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="footer-inner-2">
+        <div class="container">
+            <p class="rights"><span>&copy;&nbsp;2019-</span><span class="copyright-year"></span>. All Rights Reserved.
+                Design by <a href="https://markavilin1.github.io/portfolio/">Avilin Web Services</a></p>
+        </div>
+    </div>
+</footer>

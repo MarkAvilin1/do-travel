@@ -1,0 +1,129 @@
+{% extends 'ar/base/base.html' %}
+
+{% load static %}
+
+{% block title %} الصفحة الرئيسية {% endblock %}
+
+{% block content %}
+
+
+<!--Swiper-->
+<section class="section swiper-container swiper-slider swiper-slider-1 context-dark" data-loop="true"
+         data-autoplay="5000" data-simulate-touch="false">
+    <div class="swiper-wrapper" style="text-align:right;text-shadow:1px 1px 2px black;">
+        <div class="swiper-slide" data-slide-bg="{% static 'images/banner/airport.webp' %}">
+            <div class="swiper-slide-caption section-lg">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-9 col-lg-7 offset-md-1 offset-xxl-0">
+                            <h1>
+                                <span class="d-block" data-caption-animate="fadeInUp" data-caption-delay="100"> الشركة السياحية<b> Do-Travel </b> </span>
+                                <span class="d-block text-light" data-caption-animate="fadeInUp"
+                                      data-caption-delay="200">للخدمات السياحية والصحية والدراسية </span>
+                            </h1>
+                            <p class="lead" data-caption-animate="fadeInUp" data-caption-delay="350">
+                                رحلة الالف ميل تبدأ بخطوة!
+                            </p>
+                            <div class="button-wrap-default" data-caption-animate="fadeInUp"
+                                 data-caption-delay="450"><a class="button button-secondary-text" href="{% url 'trips_ar' %}">اعرف اكثر</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="swiper-slide" data-slide-bg="{% static 'images/banner/airplane1.webp' %}">
+            <div class="swiper-slide-caption section-lg">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-9 col-lg-7 offset-md-1 offset-xxl-0">
+                            <h1>
+                                <span class="d-block" data-caption-animate="fadeInUp" data-caption-delay="100"> الشركة السياحية <b> Do-Travel</b></span>
+                                <span class="d-block text-light" data-caption-animate="fadeInUp"
+                                      data-caption-delay="200">للخدمات السياحية والصحية والدراسية </span>
+                            </h1>
+                            <p class="lead" data-caption-animate="fadeInUp" data-caption-delay="350">
+                                العالم كتاب ومن لا يسافر يقرأ صفحة واحدة فقط.
+                            </p>
+                            <div class="button-wrap-default" data-caption-animate="fadeInUp"
+                                 data-caption-delay="450"><a class="button button-secondary-text" href="{% url 'booking_ar' %}">اعرف اكثر</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="swiper-slide" data-slide-bg="{% static 'images/banner/airplane2.webp' %}">
+            <div class="swiper-slide-caption section-lg">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-9 col-lg-7 offset-md-1 offset-xxl-0">
+                            <h1>
+                                <span class="d-block" data-caption-animate="fadeInUp" data-caption-delay="100"> الشركة السياحية <b> Do-Travel </b></span>
+                                <span class="d-block text-light" data-caption-animate="fadeInUp"
+                                      data-caption-delay="200">للخدمات السياحية والصحية والدراسية </span>
+                            </h1>
+                            <p class="lead" data-caption-animate="fadeInUp" data-caption-delay="350">
+                                تذكر أن السعادة هي وسيلة للسفر وليست وجهة.
+                            </p>
+                            <div class="button-wrap-default" data-caption-animate="fadeInUp"
+                                 data-caption-delay="450"><a class="button button-secondary-text" href="{% url 'tickets_ar' %}">اعرف اكثر</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--Swiper Pagination-->
+    <div class="swiper-pagination-wrap">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-9 col-lg-7 offset-md-1 offset-xxl-0">
+                    <div class="swiper-pagination"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Our Offers -->
+<section class="section section-md" style="background:linear-gradient(0deg, rgba(196,195,219,1) 0%, rgba(246,246,250,1) 46%, rgba(201,244,252,1) 100%);">
+    <div class="container">
+        <div class="row">
+            {% for offer in offers %}
+            <div class="col-sm-6 p-2 shadow-lg">
+                <div class="card h-100">
+                    <img class="card-img-top" src="{{ offer.image.url }}" alt="{{ offer.title }}">
+                    <div class="card-body text-end">
+                        <h5 class="card-title">{{ offer.title }}</h5>
+                        <p class="card-text p-2 text-black font-weight-bold box-show">{{ offer.description }}</p>
+                        <a href="{% url 'offer_details_ar' offer.id %}" class="btn btn-primary"> التفاصيل </a>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+
+<!-- Our Vision-->
+<section class="section bg-default section-md">
+    <div class="container">
+        <div class="row row-30">
+            <div class="col-md-12" style="text-shadow:1px 1px 2px black">
+                <h2 class="title-icon">رؤيتنا</h2>
+                <p class="big text-end text-justify text-black  font-weight-bold" dir="rtl">
+                    نسعى دائماً لنيل رضى عملاءنا من خلال تقديم أفضل الخدمات
+                    ، ونعمل على تلبية كافة احتياجاتهم وتحقيق تطلعاتهم ، لنحافظ على مكانتنا المرموقة في عالم السياحة والسفر
+                    ، ونكون الشركة الأولى على الصعيد المحلي والإقليمي في مجال السياحة والسفر والخدمات المرتبطة به
+                    . بالإضافة للاستمرار بتطوير خدماتنا واستحداث خدمات جديدة تواكب تطور القطاع السياحي في تركيا والعالم أجمع .
+                </p>
+                <a href="{% url 'contacts_ar' %}" class="btn btn-primary m-3">تواصل معنا</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock %}

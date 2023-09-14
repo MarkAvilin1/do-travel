@@ -1,0 +1,36 @@
+{% extends 'ar/base/base.html' %}
+
+{% load static %}
+
+{% block title %} تفاصيل العرض {% endblock %}
+
+{% block content %}
+
+<div class="jumbotron jumbotron-fluid" style="width:100%;height:200px;text-align:center;">
+    <h1>تفاصيل العرض</h1>
+</div>
+
+<div class="container">
+
+    <div class="card mb-3 text-end text-black font-weight-bold">
+        <div class="row g-0">
+            <div class="col-md-4">
+                <img src="{{ offer.image.url }}" class="img-fluid rounded-start" alt="offer.title">
+            </div>
+            <div class="col-md-8">
+                <div class="card-body">
+                    <h5 class="card-title">{{ offer.title }}</h5>
+                    <p class="card-text" dir="rtl">{{ offer.description }}</p>
+                </div>
+                <a href="{% url 'contacts_ar' %}" class="btn btn-primary p-2 m-3">أطلب الآن</a>
+                {% if user.is_superuser %}
+                <a href="{% url 'delete_offer_ar' offer.id %}" class="btn btn-danger p-2 m-3">حذف العرض</a>
+                {% endif %}
+            </div>
+
+        </div>
+    </div>
+
+</div>
+
+{% endblock %}

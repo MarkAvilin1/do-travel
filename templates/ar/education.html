@@ -1,0 +1,174 @@
+{% extends 'ar/base/base.html' %}
+
+{% load static %}
+
+{% block title %} الخدمات الدراسية {% endblock %}
+
+{% block content %}
+
+<div class="jumbotron jumbotron-fluid" style="width:100%;background-image:url({% static 'images/offers/study.jpg' %});
+background-repeat:no-repeat;background-size:cover;background-attachment:fixed;text-align:center;">
+    <h1 style="color:black;text-shadow:0 1px 2px black;padding:25px;">الخدمات الدراسية</h1>
+    <div class="container p-5"
+         style="background-color:rgba(256, 256, 256, 0.5); border-radius:10px;text-shadow:0 1px 2px black">
+        <h3 class="card-title text-black">خدمات القبول الجامعي</h3>
+        <h6 class="card-text text-start text-dark text-end">
+            مميزات الدراسة في تركيا :<br>
+            - من أفضل الدول التي يمكنك الدراسة فيها بسهولة وبدون تعقيدات.
+            <br>
+            - إذا حصلت على منحة للدراسة في تركيا ، فستحصل على تأمين صحي وبطاقة تعفيك
+            من تحمل تكاليف النقل العام وأشياء أخرى كثيرة.
+            <br>
+            - يوجد عدد كبير من الجامعات الحكومية في تركيا تتميز بجودة
+             التعليم ، وهناك جامعات حكومية تحتل مناصب متقدمة على المستوى العالمي.
+            <br>
+            - الجامعات التركية معترف بها دوليًا. <br>
+            - تكاليف الدراسة في الجامعات الحكومية منخفضة للغاية مقارنة بباقي دول العالم.
+            <br>
+            - يمكنك معرفة مواعيد التقديم للجامعات التركية العامة والخاصة من خلال
+             مواقع الجامعات.
+            <br>
+            - هناك جامعات تركية تسمح لك بالدراسة باللغة الإنجليزية مما يؤهلك للعمل فيها
+             الدول الأوروبية بسهولة وإتقان اللغة الإنجليزية.
+            <br>
+            - هناك جامعات تركية حكومية و خاصة تقدم برامج دراسية متميزة في مجال الطب .
+            <br>
+            - تم تصميم برامج الدراسة الطبية في الجامعات الحكومية وفق معايير عالية وتحت مستوى
+             إشراف الحكومة التركية ووزارة التعليم العالي لضمان وجود طبي
+             الخريجين بدرجة جيدة من التميز.
+            <br>
+            في Do-Travel يمكننا مساعدتك للحصول على القبول في إحدى هذه الجامعات المرموقة ، ما عليك سوى الكتابة لنا ، وسوف نقوم بالرد عليك في أسرع وقت ممكن.
+        </h6>
+    </div>
+</div>
+
+
+<div class="container shadow-lg">
+
+    {% if success_msg != '' %}
+    <div class="alert alert-success" id="success" role="alert">
+        <h5>{{ success_msg }}</h5>
+    </div>
+    {% endif %}
+
+    {% if errors != '' %}
+    <div class="alert alert-warning" role="alert">
+       <h5> {{ errors }}</h5>
+    </div>
+    {% endif %}
+
+    <form action="{% url 'education_ar' %}" method="post" class="p-5 m-5 text-end">
+        {% csrf_token %}
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label for="fullname_id" class="text-black font-weight-bold">الاسم الكمال</label>
+                <input type="text" name="fullname" class="form-control" id="fullname_id" placeholder="اسمك الكامل"  required>
+            </div>
+           <div class="form-group col-md-6">
+                <label for="nation_id" class="text-black font-weight-bold">الجنسية</label>
+                <input type="text" name="nationality" class="form-control" id="nation_id" placeholder="جنسيتك الحالية"  required>
+            </div>
+        </div>
+
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label for="gender_id" class="text-black font-weight-bold">الجنس</label>
+                <select id="gender_id" class="form-control" name="gender">
+                    <option value="لا" selected>-------</option>
+                    <option value="انثى">انثى</option>
+                    <option value="ذكر">ذكر</option>
+                </select>
+            </div>
+            <div class="form-group col-md-6">
+                <label for="age_id" class="text-black font-weight-bold">العمر</label>
+                <input type="number" name="age" class="form-control" id="age_id" placeholder="عمرك">
+            </div>
+        </div>
+
+        <div class="form-row">
+            <div class="form-group col-md-4">
+                <label for="inputEmail4" class="text-black font-weight-bold">البريد الالكتروني</label>
+                <input type="email" name="email" class="form-control" id="inputEmail4" placeholder="بريدك الالكتروني"  required>
+            </div>
+            <div class="form-group col-md-4">
+                <label for="whatsapp_id" class="text-black font-weight-bold">رقم الواتساب</label>
+                <input type="tel" class="form-control" name="phone" id="whatsapp_id" placeholder="رقم الواتساب">
+            </div>
+            <div class="form-group col-md-4">
+                <label for="date_from" class="text-black font-weight-bold">تاريخ الالتحاق </label>
+                <input name="date_from" type="date" class="form-control" id="date_from">
+            </div>
+        </div>
+
+        <div class="form-row">
+
+            <div class="form-group col-md-4">
+                <label for="special_finish_id" class="text-black font-weight-bold">شهادتك الحالية</label>
+                <select id="special_finish_id" class="form-control" name="finish">
+                    <option value="لا" selected>-------</option>
+                    <option value="الدراسة الثانوية">الدراسة الثانوية</option>
+                    <option value="درجة البكالوريوس">درجة البكالوريوس</option>
+                    <option value="درجة الماجستير">درجة الماجستير</option>
+                    <option value="درجة الدكتوراة">درجة الدكتوراة</option>
+                </select>
+            </div>
+
+            <div class="form-group col-md-4">
+                <label for="special_id" class="text-black font-weight-bold">تنوي الحصول على</label>
+                <select id="special_id" class="form-control" name="want">
+                    <option value="لا" selected>-------</option>
+                    <option value="درجة البكالوريوس">درجة البكالوريوس</option>
+                    <option value="درجة الماجستير">درجة الماجستير</option>
+                    <option value="درجة الدكتوراة">درجة الدكتوراة</option>
+                </select>
+            </div>
+            <div class="form-group col-md-4">
+                <label for="city_id" class="text-black font-weight-bold">المدينة او الجامعة</label>
+                <input type="text" name="city" class="form-control" id="city_id" placeholder="المدينة او الجامعة التي ترغب بها">
+            </div>
+
+        </div>
+
+        <div class="form-group">
+            <label for="note_id" class="text-black font-weight-bold">الملاحظات</label>
+            <textarea class="form-control" name="note" id="note_id" cols="20" rows="7a"></textarea>
+        </div>
+
+        <button type="submit" class="btn btn-primary">ارسال</button>
+    </form>
+
+</div>
+
+<script>
+    child_id.onchange = function() {
+        if(this.checked){
+        document.querySelector("#child_no").closest('.form-group').style.display = "";
+      }
+      else{
+        document.querySelector("#child_no").closest('.form-group').style.display = "none";
+      }
+    }
+
+    full_id.onchange = function() {
+        if(this.checked){
+        document.querySelector("#comprehensive").style.display = "";
+      }
+      else{
+        document.querySelector("#comprehensive").style.display = "none";
+      }
+    }
+
+    setTimeout(() => {
+      const box = document.querySelector('.alert-success');
+      box.style.display = 'none';
+    }, 10000);
+
+    setTimeout(() => {
+      const box = document.querySelector('.alert-warning');
+      box.style.display = 'none';
+    }, 20000);
+
+
+</script>
+
+{% endblock %}

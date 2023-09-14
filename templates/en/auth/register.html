@@ -1,0 +1,48 @@
+{% extends 'en/base/base.html' %}
+
+{% load static %}
+
+{% block title %} Registration {% endblock %}
+
+{% block content %}
+
+<div class="jumbotron p-5" style="height:100px;width:100%;background:skyblue;text-align:center">
+    <h1>Registration</h1>
+</div>
+
+
+<div class="container p-5">
+
+    <form class="rd-form" style="width:75%" method="post" action="{% url 'register' %}">
+
+        {% csrf_token %}
+
+        <div class="form-wrap">
+            <input type="text" name="first_name" id="first_name" class="form-input"
+                   placeholder="First Name">
+        </div>
+
+        <div class="form-wrap">
+            <input type="text" name="last_name" id="last_name" class="form-input"
+                   placeholder="Last Name">
+        </div>
+
+        <div class="form-wrap">
+            <input type="email" name="email" id="email" class="form-input" placeholder="Email Address">
+        </div>
+
+        <div class="form-wrap">
+            <input type="password" name="password" id="password" class="form-input"
+                   placeholder="Password">
+        </div>
+
+        <input type="submit" value="Register" class="btn btn-info btn-lg">
+
+        <p>
+            You Have An Account <b><a class="link-danger" href="{% url 'login' %}">Log In</a></b>
+        </p>
+    </form>
+
+</div>
+
+{% endblock %}
